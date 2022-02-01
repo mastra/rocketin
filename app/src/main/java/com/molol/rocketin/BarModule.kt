@@ -8,7 +8,7 @@ import com.molol.rocketin.viewmodel.ListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-var barModule = module {
+val                                                                                                                                                     barModule = module {
     single { ApiService.getService() }
     single<BarRepository> {  BarRepositoryImpl( get()) }
     viewModel { ListViewModel( get() ) }

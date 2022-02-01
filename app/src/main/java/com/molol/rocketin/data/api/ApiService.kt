@@ -16,7 +16,7 @@ interface ApiService {
 
     companion object {
 
-        var BASE_URL = "https://maps.googleapis.com/"
+        private const val BASE_URL = "https://maps.googleapis.com/"
 
         fun getService() : ApiService {
 

@@ -8,7 +8,7 @@ import com.molol.rocketin.model.repository.BarRepository
 import kotlinx.coroutines.launch
 
 class ListViewModel(val repository: BarRepository) : ViewModel( ) {
-      var starbacks = mutableStateOf( emptyList<Bar>())
+      val starbacks = mutableStateOf( emptyList<Bar>())
 
       init {
             viewModelScope.launch {

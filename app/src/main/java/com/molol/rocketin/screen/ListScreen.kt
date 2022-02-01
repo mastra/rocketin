@@ -19,7 +19,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ListScreen(navController: NavController) {
-    var viewModel = getViewModel<ListViewModel>()
+    val viewModel = getViewModel<ListViewModel>()
 
     Scaffold(
         topBar = {

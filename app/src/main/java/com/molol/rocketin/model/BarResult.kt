@@ -1,4 +1,3 @@
 package com.molol.rocketin.model
 
-class BarResult(var results : List<Bar>?) {
-}
+data class BarResult(val results : List<Bar>?)

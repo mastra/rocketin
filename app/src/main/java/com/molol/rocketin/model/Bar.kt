@@ -1,4 +1,3 @@
 package com.molol.rocketin.model
 
-class Bar( var name:String = "", var geometry: Geometry ) {
-}
+data class Bar( val name:String = "", val geometry: Geometry )
