@@ -16,6 +16,8 @@ import androidx.navigation.navArgument
 import com.molol.rocketin.screen.DetailScreen
 import com.molol.rocketin.screen.ListScreen
 import com.molol.rocketin.ui.theme.RocketinTheme
+import com.molol.rocketin.viewmodel.ListViewModel
+import org.koin.androidx.compose.getViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +50,10 @@ fun DefaultPreview() {
 fun MainScreen() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "list") {
-        composable("list") { ListScreen(navController) }
+        composable("list") {
+            val viewModel = getViewModel<ListViewModel>()
+            ListScreen(navController, viewModel )
+        }
         composable("detail/{lat}/{lng}",
             arguments = listOf(navArgument("lat") { type = NavType.FloatType },
                 navArgument("lng") { type = NavType.FloatType }

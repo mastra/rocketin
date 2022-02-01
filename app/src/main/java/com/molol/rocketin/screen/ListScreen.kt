@@ -18,9 +18,7 @@ import com.molol.rocketin.viewmodel.ListViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun ListScreen(navController: NavController) {
-    val viewModel = getViewModel<ListViewModel>()
-
+fun ListScreen(navController: NavController,viewModel: ListViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
