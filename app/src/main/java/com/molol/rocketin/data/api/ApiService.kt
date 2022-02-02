@@ -15,21 +15,14 @@ interface ApiService {
     suspend fun search(@Query("query") query:String, @Query("key") key:String = BuildConfig.MAPS_API_KEY, @Query("sensor") sensor: Boolean = false ) : Response<BarResult>
 
     companion object {
-
         private const val BASE_URL = "https://maps.googleapis.com/"
 
-        fun getService() : ApiService {
-
-            val httpClient = OkHttpClient.Builder()
-            httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) )
-
-            val retrofit = Retrofit.Builder()
+        fun getService() : ApiService = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
-                .client(httpClient.build())
-                .build()
-            return retrofit.create(ApiService::class.java)
-
-        }
+                .client(OkHttpClient.Builder()
+                    .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) )
+                    .build())
+                .build().create(ApiService::class.java)
     }
 }
