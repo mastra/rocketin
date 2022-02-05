@@ -22,7 +22,7 @@ fun ListScreen(navController: NavController,viewModel: ListViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("List Starbucks") },
+                title = { Text("List Bares") },
             )
         }
 
@@ -35,7 +35,7 @@ fun ListScreen(navController: NavController,viewModel: ListViewModel) {
                     modifier = Modifier
                         .padding(8.dp)
                         .clickable {
-                        navController.navigate("detail/${bar.geometry.location?.lat}/${bar.geometry.location?.lng}")
+                        navController.navigate("detail")
                     })
                 }
             }

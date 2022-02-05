@@ -13,9 +13,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.molol.rocketin.screen.AnotherScreen
 import com.molol.rocketin.screen.DetailScreen
 import com.molol.rocketin.screen.ListScreen
 import com.molol.rocketin.ui.theme.RocketinTheme
+import com.molol.rocketin.viewmodel.DetailViewModel
 import com.molol.rocketin.viewmodel.ListViewModel
 import org.koin.androidx.compose.getViewModel
 
@@ -54,16 +56,12 @@ fun MainScreen() {
             val viewModel = getViewModel<ListViewModel>()
             ListScreen(navController, viewModel )
         }
-        composable("detail/{lat}/{lng}",
-            arguments = listOf(navArgument("lat") { type = NavType.FloatType },
-                navArgument("lng") { type = NavType.FloatType }
-            )
-        ) { entry ->
-            DetailScreen(
-                navController,
-                entry.arguments?.getFloat("lat"), entry.arguments?.getFloat("lng"),
-            )
+        composable("detail" ) { entry ->
+            val viewModel = getViewModel<DetailViewModel>()
+            DetailScreen(  navController , viewModel )
         }
-
+        composable( "another") {
+            AnotherScreen(navController = navController)
+        }
     }
 }
