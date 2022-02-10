@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,8 +20,9 @@ import com.molol.rocketin.screen.ListScreen
 import com.molol.rocketin.ui.theme.RocketinTheme
 import com.molol.rocketin.viewmodel.DetailViewModel
 import com.molol.rocketin.viewmodel.ListViewModel
-import org.koin.androidx.compose.getViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +55,12 @@ fun MainScreen() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "list") {
         composable("list") {
-            val viewModel = getViewModel<ListViewModel>()
-            ListScreen(navController, viewModel )
+
+            ListScreen(navController )
         }
         composable("detail" ) { entry ->
-            val viewModel = getViewModel<DetailViewModel>()
-            DetailScreen(  navController , viewModel )
+
+            DetailScreen(  navController  )
         }
         composable( "another") {
             AnotherScreen(navController = navController)
