@@ -19,8 +19,8 @@ import androidx.navigation.NavController
 import com.molol.rocketin.viewmodel.ListViewModel
 
 @Composable
-fun ListScreen(navController: NavController) {
-    val viewModel :ListViewModel = hiltViewModel()
+fun ListScreen(navController: NavController, viewModel: ListViewModel) {
+
     Scaffold(
         topBar = {
             TopAppBar(

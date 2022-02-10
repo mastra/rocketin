@@ -35,8 +35,8 @@ import kotlinx.coroutines.launch
 //The function hiltViewModel() returns an existing ViewModel or creates a new one scoped to the current navigation graph present on the NavController back stack. The function can optionally take a NavBackStackEntry to scope the ViewModel to a parent back stack entry.
 
 @Composable
-fun DetailScreen(navController: NavController) {
-    val viewModel :DetailViewModel = hiltViewModel()
+fun DetailScreen(navController: NavController, viewModel: DetailViewModel) {
+
     Scaffold(
         topBar = {
             TopAppBar(

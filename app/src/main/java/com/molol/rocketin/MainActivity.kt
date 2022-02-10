@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -55,12 +56,12 @@ fun MainScreen() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "list") {
         composable("list") {
-
-            ListScreen(navController )
+            val viewModel :ListViewModel = hiltViewModel()
+            ListScreen(navController, viewModel  )
         }
         composable("detail" ) { entry ->
-
-            DetailScreen(  navController  )
+            val viewModel :DetailViewModel = hiltViewModel()
+            DetailScreen(  navController , viewModel )
         }
         composable( "another") {
             AnotherScreen(navController = navController)
